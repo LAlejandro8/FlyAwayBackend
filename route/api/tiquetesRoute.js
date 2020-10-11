@@ -22,8 +22,14 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
     let body = req.body
     let tiquete = new tiquetesModel({
-        nombre: body.nombre,
-        valor: body.valor
+        vuelo: body.vuelo,
+        nombre_pasajero: body.nombre_pasajero,
+        clase: body.clase,
+        origen: body.origen,
+        destino: body.destino,
+        fecha_vuelo: body.fecha_vuelo,
+        gate: body.gate,
+        asiento: body.gate
     })
     tiquete.save((err, tiqueteGuardado) => {
         if (err) {
