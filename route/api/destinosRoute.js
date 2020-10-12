@@ -44,5 +44,12 @@ app.post('/', (req, res) => {
     })
 })
 
+app.put ('/', (req, res) => {
+    console.log('Pasando por update', req)    
+})
+
+app.delete ('/', (req, res) => {
+    console.log('Pasando por delete', req)
+})
 
 module.exports = app
