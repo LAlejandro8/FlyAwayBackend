@@ -44,7 +44,7 @@ app.post('/', (req, res) => {
     })
 })
 
-app.put('/:id', (req, res) => {
+app.put('/', (req, res) => {
     let id = req.params.id
     destinosModel.findByIdAndUpdate({ id }, {
         vuelo: body.vuelo,
@@ -63,7 +63,7 @@ app.put('/:id', (req, res) => {
 
 })
 
-app.delete('/:id', (req, res) => {
+app.delete('/', (req, res) => {
     let id = req.params.id;
     destinosModel.findByIdAndRemove(id, (err, destino) => {
         // check if query error
