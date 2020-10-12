@@ -46,6 +46,7 @@ app.post('/', (req, res) => {
 
 app.put('/:id', (req, res) => {
     let id = req.params.id
+    let body = req.body
     destinosModel.findByIdAndUpdate({ id }, {
         vuelo: body.vuelo,
         clase: body.clase,
