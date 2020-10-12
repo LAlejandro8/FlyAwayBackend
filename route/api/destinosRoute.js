@@ -44,12 +44,35 @@ app.post('/', (req, res) => {
     })
 })
 
-app.put ('/', (req, res) => {
-    console.log('Pasando por update', req)    
+app.put('/:id', (req, res) => {
+    let id = req.params.id
+    destinosModel.findByIdAndUpdate({ id }, {
+        vuelo: body.vuelo,
+        clase: body.clase,
+        origen: body.origen,
+        destino: body.destino,
+        fecha_vuelo: body.fecha_vuelo,
+        valor: body.valor
+    }, function (err, docs) {
+        if (err) res.json(err);
+        else {
+            console.log(docs);
+            res.redirect('/' + id);
+        }
+    })
+
 })
 
-app.delete ('/', (req, res) => {
-    console.log('Pasando por delete', req)
+app.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    destinosModel.findByIdAndRemove(id, (err, destino) => {
+        // check if query error
+        if (err) {
+            console.log(err);
+            return res.json({ success: false });
+        }
+        res.redirect('/' + id);
+    })
 })
 
 module.exports = app
