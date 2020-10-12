@@ -46,5 +46,16 @@ app.post('/', (req, res) => {
     })
 })
 
+app.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    tiquetesModel.findByIdAndRemove(id, (err, destino) => {
+        // check if query error
+        if (err) {
+            console.log(err);
+            return res.json({ success: false });
+        }
+        res.redirect('/' + id);
+    })
+})
 
 module.exports = app
